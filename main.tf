@@ -1,3 +1,13 @@
+terraform {
+   backend "remote" {
+     organization = "9incloud"
+
+      workspaces {
+        name = "dev-workspace"
+      }
+   }
+}
+
 variable "awsprops" {
     type = map
     default = {
@@ -15,7 +25,8 @@ variable "awsprops" {
 
 provider "aws" {
   region = lookup(var.awsprops, "region")
-  profile = lookup(var.awsprops, "profile")
+  # profile only for local
+#   profile = lookup(var.awsprops, "profile")
 }
 
 resource "aws_security_group" "project-iac-sg" {
