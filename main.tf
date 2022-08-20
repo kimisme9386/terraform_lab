@@ -3,7 +3,7 @@ terraform {
     organization = "9incloud"
 
     workspaces {
-      name = "dev-workspace"
+      name = "dev-workspace-api-driven"
     }
   }
 }
