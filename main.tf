@@ -95,3 +95,7 @@ resource "aws_instance" "project-iac" {
 output "ec2instanceip" {
   value = aws_instance.project-iac.public_ip
 }
+
+output "ec2instancedns" {
+  value = aws_instance.project-iac.public_dns
+}
