@@ -29,6 +29,12 @@ provider "aws" {
 #   profile = lookup(var.awsprops, "profile")
 }
 
+module "vpc" {
+  source = "./modules/vpc"
+  region = lookup(var.awsprops, "region")
+}
+
+
 resource "aws_security_group" "project-iac-sg" {
   name = lookup(var.awsprops, "secgroupname")
   description = lookup(var.awsprops, "secgroupname")
@@ -86,6 +92,6 @@ resource "aws_instance" "project-iac" {
 }
 
 
-output "ec2instance" {
+output "ec2instanceip" {
   value = aws_instance.project-iac.public_ip
 }
